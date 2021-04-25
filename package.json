@@ -1,0 +1,19 @@
+{
+  "name": "mars-rover",
+  "version": "1.0.0",
+  "description": "Moving robots around Mars",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MissDove/mars-rover.git"
+  },
+  "author": "Agata Jones",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MissDove/mars-rover/issues"
+  },
+  "homepage": "https://github.com/MissDove/mars-rover#readme"
+}

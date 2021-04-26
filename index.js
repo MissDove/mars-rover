@@ -8,159 +8,157 @@ let splitGrid = grid.split(" ");
 let xSize = splitGrid[0];
 let ySize = splitGrid[1];
 
-console.log("X SIZE", xSize);
-console.log("Y SIZE", ySize);
-
-
+// get robot position and movements
 let robotPosition = prompt("Please provide robot's position and movements: ");
 
 let userInput = robotPosition.split("(" && "," && ")" && " " );
 
 let initialXPosition = userInput[0].replace("(", "");
 let initialYPosition = userInput[1];
-let initialOrientation = userInput[2].replace(")", "");
+let initialOrientation = userInput[2].replace(")", "").toUpperCase();
 let movements = userInput[3];
 
-console.log("INITIAL X POSITION", initialXPosition);
-console.log("INITIAL Y POSITION", initialYPosition);
-console.log("INITIAL ORIENTATION", initialOrientation);
-console.log("MOVEMENTS", movements);
 
+// function to move robot
 const moveRobot = (x, y, orientation, movements) => {
     let splitMovements = movements.split("").map((movement) => movement.toUpperCase());
-
-    console.log("split movements", splitMovements);
 
     let xPosition = parseInt(x);
     let yPosition = parseInt(y);
     let directionFromInput = orientation.toUpperCase();
 
-    const checkLDirection = (x, y, direction) => {
-        let lArray = [];
+    let directionArray = [{xPosition: parseInt(initialXPosition), yPosition: parseInt(initialYPosition), direction: initialOrientation}];
 
+    const checkLDirection = (x, y, direction) => {
          if (direction === "N") {
-             lArray.push({
+             directionArray.push({
                 xPosition: xPosition = x,
                 yPosition: yPosition = y,
                 direction: directionFromInput = "W"
             });
 
         } else if (direction === "E") {
-             lArray.push({
+             directionArray.push({
                 xPosition: xPosition = x,
                 yPosition: yPosition = y,
                 direction: directionFromInput = "N"
             })
         } else if (direction === "W") {
-             lArray.push({
+             directionArray.push({
                 xPosition: xPosition = x,
                 yPosition: yPosition = y,
                 direction: directionFromInput = "S"
             })
         } else if (direction === "S") {
-             lArray.push({
+             directionArray.push({
                 xPosition: xPosition = x,
                 yPosition: yPosition = y,
                 direction: directionFromInput = "E"
             })
         }
-         console.log("L", lArray);
-         return lArray;
+         return directionArray;
     };
 
     const checkRDirection = (x, y, direction) => {
-        let rArray = [];
-
         if (direction === "N") {
-            rArray.push({
+            directionArray.push({
                 xPosition: xPosition = x,
                 yPosition: yPosition = y,
                 direction: directionFromInput = "E"
             })
         } else if (direction === "E") {
-            rArray.push({
+            directionArray.push({
                 xPosition: xPosition = x,
                 yPosition: yPosition = y,
                 direction: directionFromInput = "S"
             })
         } else if (direction === "W") {
-            rArray.push({
+            directionArray.push({
                 xPosition: xPosition = x,
                 yPosition: yPosition = y,
                 direction: directionFromInput = "N"
             })
         } else if (direction === "S") {
-            rArray.push({
+            directionArray.push({
                 xPosition: xPosition = x,
                 yPosition: yPosition = y,
                 direction: directionFromInput = "W"
             })
         }
-        console.log("R", rArray);
-        return rArray;
+        return directionArray;
     }
 
     const checkFDirection = (x, y, direction) => {
-        let fArray = [];
-
         if (direction === "N") {
-            fArray.push({
+            directionArray.push({
                 xPosition: xPosition = x,
                 yPosition: yPosition = y + 1,
                 direction: directionFromInput = "N"
             })
         } else if (direction === "E") {
-            fArray.push({
+            directionArray.push({
                 xPosition: xPosition = x + 1,
                 yPosition: yPosition = y,
                 direction: directionFromInput = "E"
             })
         } else if (direction === "W") {
-            fArray.push({
+            directionArray.push({
                 xPosition: xPosition = x - 1,
                 yPosition: yPosition = y,
                 direction: directionFromInput = "W"
             })
         } else if (direction === "S") {
-            fArray.push({
+            directionArray.push({
                 xPosition: xPosition = x,
                 yPosition: yPosition = y - 1,
                 direction: directionFromInput = "S"
             })
         }
+        return directionArray;
+    }
 
-        console.log("F", fArray);
-        return fArray;
+    splitMovements.forEach((value, ) => {
+        if (value === "L") {
+            checkLDirection(xPosition, yPosition, directionFromInput);
+        } else if (value === "R") {
+            checkRDirection(xPosition, yPosition, directionFromInput);
+        } else if (value === "F") {
+            checkFDirection(xPosition, yPosition, directionFromInput);
+        }
+    });
+
+    // reversing array to check for the last position
+    let reversed = directionArray.reverse()
+
+    // getting the last position
+    let firstReversed = reversed.shift();
+
+    let isLost = false;
+
+    // checking if last position is within grid or not
+    if ((firstReversed.xPosition < 0 || firstReversed.xPosition > xSize) || (firstReversed.yPosition < 0 || firstReversed.yPosition > ySize) ) {
+        isLost = true;
+    } else if ((firstReversed.xPosition >= 0 && firstReversed.xPosition <= xSize) && (firstReversed.yPosition >= 0 && firstReversed.yPosition <= ySize)) {
+        isLost = false
+    }
+
+    // if last position is not within grid, looking for the last position that was within grid
+    if (!isLost) {
+        console.log(`(${firstReversed.xPosition}, ${firstReversed.yPosition}, ${firstReversed.direction})`)
+    } else {
+        const lastPosition = reversed.find((value) =>
+            ((value.xPosition >= 0 && value.xPosition <= xSize) && (value.yPosition >= 0 && value.yPosition <= ySize))
+        )
+        console.log(`(${lastPosition.xPosition}, ${lastPosition.yPosition}, ${lastPosition.direction}) LOST`);
     }
 
 
 
-    let allPositionsArray = [];
-
-    splitMovements.forEach((value, ) => {
-        if (value === "L") {
-            allPositionsArray.push(checkLDirection(xPosition, yPosition, directionFromInput));
-        } else if (value === "R") {
-            allPositionsArray.push(checkRDirection(xPosition, yPosition, directionFromInput));
-        } else if (value === "F") {
-            allPositionsArray.push(checkFDirection(xPosition, yPosition, directionFromInput));
-        }
-    });
 
 
-    console.log("all positions here", allPositionsArray);
 
-    let reversed = allPositionsArray.reverse();
 
-    console.log("REVERSED", reversed[0]);
 
-    console.log("position", `(${reversed[0][0].xPosition} ${reversed[0][0].yPosition} ${reversed[0][0].direction})`);
-
-    // let lastPosition = false;
-    //
-    // while(!lastPosition) {
-    //
-    // }
 }
 
 moveRobot(initialXPosition, initialYPosition, initialOrientation, movements);

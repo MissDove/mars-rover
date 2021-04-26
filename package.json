@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/MissDove/mars-rover/issues"
   },
-  "homepage": "https://github.com/MissDove/mars-rover#readme"
+  "homepage": "https://github.com/MissDove/mars-rover#readme",
+  "dependencies": {
+    "prompt-sync": "^4.2.0"
+  }
 }

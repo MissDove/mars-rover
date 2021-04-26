@@ -1,6 +1,6 @@
-// some code to help me understand the requirements
+// some code to help me understand the behaviour of robots
 
- const orientation = {
+ const directions = {
      N: {
          L: "W",
          R: "E",

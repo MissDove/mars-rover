@@ -147,7 +147,7 @@ const moveRobot = (x, y, orientation, movements) => {
         }
     });
 
-    
+
     console.log("all positions here", allPositionsArray);
 
     let reversed = allPositionsArray.reverse();

@@ -1,4 +1,4 @@
-const { moveRobot } = require('./index');
+const { moveRobot } = require('../src/index');
 
 
 test("moveRobot function", () => {

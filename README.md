@@ -42,7 +42,7 @@ The output would be:
 * Git clone this repo
 * Make sure you have npm and node installed on your machine 
 * In the root of the project run `npm install` to install all the necessary dependencies
-* In the root of the project run `node index.js` to run the app and just follow the instructions
+* In the root of the project run `node src/index.js` to run the app and just follow the instructions
 
 
 ## Next steps

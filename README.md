@@ -35,3 +35,8 @@ Another example for the input:
 The output would be:
 * (2, 3, W)
 * (1, 0, S) LOST
+
+## Next steps
+* Write tests (including edge cases)
+* Refactor `moveRobot()` function to take position and movements of more than one robot
+* Add validation for inputs

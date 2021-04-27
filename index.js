@@ -29,6 +29,7 @@ const moveRobot = (x, y, orientation, movements) => {
 
     let directionArray = [{xPosition: parseInt(initialXPosition), yPosition: parseInt(initialYPosition), direction: initialOrientation}];
 
+    // function to rotate robot to the left by 90 degrees
     const checkLDirection = (x, y, direction) => {
          if (direction === "N") {
              directionArray.push({
@@ -59,6 +60,7 @@ const moveRobot = (x, y, orientation, movements) => {
          return directionArray;
     };
 
+    // function to rotate robot to the right by 90 degress
     const checkRDirection = (x, y, direction) => {
         if (direction === "N") {
             directionArray.push({
@@ -88,6 +90,7 @@ const moveRobot = (x, y, orientation, movements) => {
         return directionArray;
     }
 
+    // function to move robot forward by one
     const checkFDirection = (x, y, direction) => {
         if (direction === "N") {
             directionArray.push({
@@ -151,14 +154,6 @@ const moveRobot = (x, y, orientation, movements) => {
         )
         console.log(`(${lastPosition.xPosition}, ${lastPosition.yPosition}, ${lastPosition.direction}) LOST`);
     }
-
-
-
-
-
-
-
-
 }
 
 moveRobot(initialXPosition, initialYPosition, initialOrientation, movements);

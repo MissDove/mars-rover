@@ -20,7 +20,7 @@ let movements = userInput[3];
 
 
 // function to move robot
-export const moveRobot = (xGrid, yGrid, x, y, orientation, movements) => {
+const moveRobot = (xGrid, yGrid, x, y, orientation, movements) => {
     let splitMovements = movements.split("").map((movement) => movement.toUpperCase());
 
     let xPosition = parseInt(x);
@@ -158,11 +158,4 @@ export const moveRobot = (xGrid, yGrid, x, y, orientation, movements) => {
 
 moveRobot(initialXPosition, initialYPosition, initialOrientation, movements, xSize, ySize);
 
-const functions = {
-    moveRobot
-}
-
-export default functions;
-
-
-
+module.exports = { moveRobot }

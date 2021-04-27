@@ -46,6 +46,6 @@ The output would be:
 
 
 ## Next steps
-* Write tests (including edge cases)
+* Fix testing environment (imports) and finish writing tests
 * Refactor `moveRobot()` function to take position and movements of more than one robot
 * Add validation for inputs

@@ -46,6 +46,8 @@ The output would be:
 
 
 ## Next steps
-* Fix testing environment (imports) and finish writing tests
-* Refactor `moveRobot()` function to take position and movements of more than one robot
+* Write tests (TDD)
+* Refactor `moveRobot()` function
+  * to pass tests written for TDD
+  * to take position and movements of more than one robot
 * Add validation for inputs

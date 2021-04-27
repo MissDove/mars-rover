@@ -20,7 +20,7 @@ let movements = userInput[3];
 
 
 // function to move robot
-const moveRobot = (x, y, orientation, movements) => {
+export const moveRobot = (xGrid, yGrid, x, y, orientation, movements) => {
     let splitMovements = movements.split("").map((movement) => movement.toUpperCase());
 
     let xPosition = parseInt(x);
@@ -139,9 +139,9 @@ const moveRobot = (x, y, orientation, movements) => {
     let isLost = false;
 
     // checking if last position is within grid or not
-    if ((firstReversed.xPosition < 0 || firstReversed.xPosition > xSize) || (firstReversed.yPosition < 0 || firstReversed.yPosition > ySize) ) {
+    if ((firstReversed.xPosition < 0 || firstReversed.xPosition > xGrid) || (firstReversed.yPosition < 0 || firstReversed.yPosition > yGrid) ) {
         isLost = true;
-    } else if ((firstReversed.xPosition >= 0 && firstReversed.xPosition <= xSize) && (firstReversed.yPosition >= 0 && firstReversed.yPosition <= ySize)) {
+    } else if ((firstReversed.xPosition >= 0 && firstReversed.xPosition <= xGrid) && (firstReversed.yPosition >= 0 && firstReversed.yPosition <= yGrid)) {
         isLost = false
     }
 
@@ -150,14 +150,19 @@ const moveRobot = (x, y, orientation, movements) => {
         console.log(`(${firstReversed.xPosition}, ${firstReversed.yPosition}, ${firstReversed.direction})`)
     } else {
         const lastPosition = reversed.find((value) =>
-            ((value.xPosition >= 0 && value.xPosition <= xSize) && (value.yPosition >= 0 && value.yPosition <= ySize))
+            ((value.xPosition >= 0 && value.xPosition <= xGrid) && (value.yPosition >= 0 && value.yPosition <= yGrid))
         )
         console.log(`(${lastPosition.xPosition}, ${lastPosition.yPosition}, ${lastPosition.direction}) LOST`);
     }
 }
 
-moveRobot(initialXPosition, initialYPosition, initialOrientation, movements);
+moveRobot(initialXPosition, initialYPosition, initialOrientation, movements, xSize, ySize);
 
+const functions = {
+    moveRobot
+}
+
+export default functions;
 
 
 

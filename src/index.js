@@ -57,6 +57,7 @@ const moveRobot = (xGrid, yGrid, x, y, orientation, movements) => {
                 direction: directionFromInput = "E"
             })
         }
+         console.log("1", directionArray);
          return directionArray;
     };
 
@@ -87,6 +88,7 @@ const moveRobot = (xGrid, yGrid, x, y, orientation, movements) => {
                 direction: directionFromInput = "W"
             })
         }
+        console.log("2", directionArray);
         return directionArray;
     }
 
@@ -117,6 +119,7 @@ const moveRobot = (xGrid, yGrid, x, y, orientation, movements) => {
                 direction: directionFromInput = "S"
             })
         }
+        console.log("3", directionArray);
         return directionArray;
     }
 
@@ -129,6 +132,8 @@ const moveRobot = (xGrid, yGrid, x, y, orientation, movements) => {
             checkFDirection(xPosition, yPosition, directionFromInput);
         }
     });
+
+    console.log("All array", directionArray);
 
     // reversing array to check for the last position
     let reversed = directionArray.reverse()
@@ -156,6 +161,6 @@ const moveRobot = (xGrid, yGrid, x, y, orientation, movements) => {
     }
 }
 
-moveRobot(initialXPosition, initialYPosition, initialOrientation, movements, xSize, ySize);
+moveRobot(xSize, ySize, initialXPosition, initialYPosition, initialOrientation, movements);
 
 module.exports = { moveRobot }
